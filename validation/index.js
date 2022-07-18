@@ -15,7 +15,7 @@ exports.runValidation = (req, res, next) => {
 exports.validationRegister = [
     check('username', `Username can't be empty`).notEmpty(),
     check('email', `Email can't be empty`).notEmpty().matches(/.+\@.+\..+/).withMessage('Please enter email in correct format'),
-    check('password', `Password can't be empty`).notEmpty().isLength({min : 8}).withMessage('Password must contain at least 8 characters')
+    check('password', `Password can't be empty`).notEmpty().isLength({min : 8}).withMessage('Password must contain at least 8 characters with combinations of capital letters, numbers and symbols.')
 ]
 
 exports.validationLogin = [
