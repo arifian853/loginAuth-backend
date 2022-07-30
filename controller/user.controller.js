@@ -70,6 +70,7 @@ exports.UserLogin = async (req,res) => {
     }
 }
 
+
 exports.getSingleUser = async (req,res) => {
     const user = await User.findOne({_id: req.id})
     return res.status(200).json({
