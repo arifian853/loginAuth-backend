@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express       = require('express');
 const app           = express();
-// const bodyParser    = require('body-parser');
+const bodyParser    = require('body-parser');
 const RouteUser     = require('./routes/User');
 const mongoose      = require('mongoose');
 const cors          = require('cors');
@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log('Database ERROR !')
 })
 
-// app.use(bodyParser.json());
-app.use('/', RouteUser)
+app.use(bodyParser.json());
+app.use("",RouteUser)
 
 app.listen(process.env.PORT, (req,res) => {
     console.log(`Server run at PORT ${process.env.PORT} or localhost://${PORT}`)
