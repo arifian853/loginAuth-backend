@@ -1,12 +1,20 @@
 require('dotenv').config();
+var http            = require('http');
+var httpProxy       = require('http-proxy');
+var proxy           = httpProxy.createProxyServer({});
 const express       = require('express');
 const app           = express();
 const bodyParser    = require('body-parser');
 const RouteUser     = require('./routes/User');
 const mongoose      = require('mongoose');
 const cors          = require('cors');
-const PORT          = process.env.PORT || 3000;
+const PORT          = process.env.PORT || 3001;
+
 app.use(cors())
+
+http.createServer(function(req, res) {
+    proxy.web(req, res, { target: 'https://www.herokuapp.com' });
+}).listen(3000);
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
